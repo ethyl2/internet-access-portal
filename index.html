@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Internet Access Buttons</title>
+
+  <!-- Toggle switch code is based on
+  http://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_switch
+  -->
+
+  <style>
+
+    body {
+      margin: auto;
+      display: block;
+      text-align: center;
+      font-family: sans-serif;
+    }
+
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 34px;
+      }
+
+    .switch input {
+      display:none;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 34px;
+      background-color: #ccc;
+      -webkit-transition: .4s;
+      transition: .4s;
+      will-change: transform;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 26px;
+      width: 26px;
+      left: 4px;
+      bottom: 4px;
+      border-radius: 50%;
+      background-color: white;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+
+    input:checked + .slider {
+      background-color: #2196F3;
+    }
+
+    input:focus + .slider {
+      box-shadow: 0 0 1px #2196F3;
+    }
+
+    input:checked + .slider:before {
+      -webkit-transform: translateX(26px);
+      -ms-transform: translateX(26px);
+      transform: translateX(26px);
+    }
+
+  </style>
+
+</head>
+
+<body>
+<h1>Internet Access Buttons</h1>
+
+  <div class="person">
+    <h2>Paul</h2>
+    <label class="switch">
+      <input type="checkbox" checked>
+      <div class="slider" id="paul"></div>
+    </label>
+  </div>
+
+  <div class="person">
+    <h2>Rose</h2>
+    <label class="switch">
+      <input type="checkbox" checked>
+      <div class="slider" id="rose"></div>
+    </label>
+  </div>
+
+  <div class="person">
+    <h2>Thomas</h2>
+    <label class="switch">
+      <input type="checkbox" checked>
+      <div class="slider" id="thomas"></div>
+    </label>
+  </div>
+
+  <div class="person">
+    <h2>Tablet</h2>
+    <label class="switch">
+      <input type="checkbox" checked>
+      <div class="slider" id="tablet"></div>
+    </label>
+  </div>
+
+  <script>
+
+  // Toggles the passed button from OFF to ON and vice-versa.
+  function toggle(button) {
+    if (button.value == "OFF") {
+      button.value = "ON";
+    } else {
+      button.value = "OFF";
+    }
+  }
+
+  var paulToggle = document.getElementById("paul");
+  paulToggle.onclick = function() {
+    toggle(this);
+    if (this.value == "ON") {
+      console.log("Time to turn on Paul's internet");
+    }
+    else {
+      console.log("Time to turn off Paul's internet");
+    }
+  }
+
+  var roseToggle = document.getElementById("rose");
+  roseToggle.onclick = function() {
+    toggle(this);
+    if (this.value == "ON") {
+      console.log("Time to turn on Rose's internet");
+    }
+    else {
+      console.log("Time to turn off Rose's internet");
+    }
+  }
+
+  var thomasToggle = document.getElementById("thomas");
+  thomasToggle.onclick = function() {
+    toggle(this);
+    if (this.value == "ON") {
+      console.log("Time to turn on Thomas' internet");
+    }
+    else {
+      console.log("Time to turn off Thomas' internet");
+    }
+  }
+
+  var tabletToggle = document.getElementById("tablet");
+  tabletToggle.onclick = function() {
+    toggle(this);
+    if (this.value == "ON") {
+      console.log("Time to turn on the tablet's internet");
+    }
+    else {
+      console.log("Time to turn off the tablet's internet");
+    }
+  }
+  </script>
+
+</body>
+
+</html>
