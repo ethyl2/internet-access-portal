@@ -46,13 +46,13 @@
 
     .slider:before {
       position: absolute;
-      content: "";
       height: 26px;
       width: 26px;
       left: 4px;
       bottom: 4px;
       border-radius: 50%;
       background-color: white;
+      content: "";
       -webkit-transition: .4s;
       transition: .4s;
     }
@@ -77,12 +77,13 @@
 
 <body>
 <h1>Internet Access Buttons</h1>
+<hr>
 
   <div class="person">
     <h2>Paul</h2>
     <label class="switch">
       <input type="checkbox" checked>
-      <div class="slider" id="paul"></div>
+      <div class="slider" id="paul" onclick="takeAction(this)"></div>
     </label>
   </div>
 
@@ -90,7 +91,7 @@
     <h2>Rose</h2>
     <label class="switch">
       <input type="checkbox" checked>
-      <div class="slider" id="rose"></div>
+      <div class="slider" id="rose" onclick="takeAction(this)"></div>
     </label>
   </div>
 
@@ -98,7 +99,7 @@
     <h2>Thomas</h2>
     <label class="switch">
       <input type="checkbox" checked>
-      <div class="slider" id="thomas"></div>
+      <div class="slider" id="thomas" onclick="takeAction(this)"></div>
     </label>
   </div>
 
@@ -106,7 +107,7 @@
     <h2>Tablet</h2>
     <label class="switch">
       <input type="checkbox" checked>
-      <div class="slider" id="tablet"></div>
+      <div class="slider" id="tablet" onclick="takeAction(this)"></div>
     </label>
   </div>
 
@@ -121,49 +122,44 @@
     }
   }
 
-  var paulToggle = document.getElementById("paul");
-  paulToggle.onclick = function() {
-    toggle(this);
-    if (this.value == "ON") {
-      console.log("Time to turn on Paul's internet");
+  var message = "";
+  function turnMessage(state, name) {
+    if (state == "ON") {
+      message = "Time to turn on " + name + "'s internet";
     }
     else {
-      console.log("Time to turn off Paul's internet");
+      message = "Time to turn off " + name + "'s internet";
     }
+    return message;
   }
 
-  var roseToggle = document.getElementById("rose");
-  roseToggle.onclick = function() {
-    toggle(this);
-    if (this.value == "ON") {
-      console.log("Time to turn on Rose's internet");
-    }
-    else {
-      console.log("Time to turn off Rose's internet");
-    }
-  }
+  function takeAction(button) {
+    var x = button.id;
+    switch (x) {
+      case 'paul':
+        toggle(this);
+        console.log(turnMessage(this.value, "Paul"));
+        break;
 
-  var thomasToggle = document.getElementById("thomas");
-  thomasToggle.onclick = function() {
-    toggle(this);
-    if (this.value == "ON") {
-      console.log("Time to turn on Thomas' internet");
-    }
-    else {
-      console.log("Time to turn off Thomas' internet");
-    }
-  }
+      case 'rose':
+        toggle(this);
+        console.log(turnMessage(this.value, "Rose"));
+        break;
 
-  var tabletToggle = document.getElementById("tablet");
-  tabletToggle.onclick = function() {
-    toggle(this);
-    if (this.value == "ON") {
-      console.log("Time to turn on the tablet's internet");
+      case 'thomas':
+        toggle(this);
+        console.log(turnMessage(this.value, "Thomas"));
+        break;
+
+      case 'tablet':
+        toggle(this);
+        console.log(turnMessage(this.value, "the tablet"));
+        break;
+
+      default:
+        return false;
     }
-    else {
-      console.log("Time to turn off the tablet's internet");
-    }
-  }
+}
   </script>
 
 </body>
