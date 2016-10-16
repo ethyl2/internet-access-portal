@@ -19,6 +19,12 @@
       font-family: sans-serif;
     }
 
+    h3 {
+      display: inline-block;
+      color: #f28735;
+      margin: auto;
+    }
+
     .switch {
       position: relative;
       display: inline-block;
@@ -51,7 +57,7 @@
       left: 4px;
       bottom: 4px;
       border-radius: 50%;
-      background-color: white;
+      background-color: #eff8f9;
       content: "";
       -webkit-transition: .4s;
       transition: .4s;
@@ -71,6 +77,13 @@
       transform: translateX(26px);
     }
 
+    #submit {
+      background-color: #2196F3;
+      height: 34px;
+      font-weight: bold;
+      color: white;
+    }
+
   </style>
 
 </head>
@@ -79,39 +92,69 @@
 <h1>Internet Access Buttons</h1>
 <hr>
 
+  <div id="password-entry">
+      <h3>User password:</h3>
+      <input type="password" name="psw" id="entered-password">
+      <input type="submit" id="submit" value="Submit">
+    <hr>
+  </div>
+
   <div class="person">
     <h2>Paul</h2>
+    <h3>ON</h3>
     <label class="switch">
       <input type="checkbox" checked>
       <div class="slider" id="paul" onclick="takeAction(this)"></div>
     </label>
+    <h3>OFF</h3>
+    <hr>
   </div>
 
   <div class="person">
     <h2>Rose</h2>
+    <h3>ON</h3>
     <label class="switch">
       <input type="checkbox" checked>
       <div class="slider" id="rose" onclick="takeAction(this)"></div>
     </label>
+    <h3>OFF</h3>
+    <hr>
   </div>
 
   <div class="person">
     <h2>Thomas</h2>
+    <h3>ON</h3>
     <label class="switch">
       <input type="checkbox" checked>
       <div class="slider" id="thomas" onclick="takeAction(this)"></div>
     </label>
+    <h3>OFF</h3>
+    <hr>
   </div>
 
   <div class="person">
     <h2>Tablet</h2>
+    <h3>ON</h3>
     <label class="switch">
       <input type="checkbox" checked>
       <div class="slider" id="tablet" onclick="takeAction(this)"></div>
     </label>
+    <h3>OFF</h3>
+    <hr>
   </div>
 
   <script>
+
+  var enteredPassword = document.getElementById('entered-password');
+  var submitButton = document.getElementById('submit');
+
+  submitButton.onclick = function() {
+    console.log("Submitted");
+    console.log(enteredPassword.value);
+  }
+
+  // TODO: add to password form:<form action="action_page.php"> and add
+  // action_page.php
 
   // Toggles the passed button from OFF to ON and vice-versa.
   function toggle(button) {
@@ -135,31 +178,31 @@
 
   function takeAction(button) {
     var x = button.id;
-    switch (x) {
-      case 'paul':
-        toggle(this);
-        console.log(turnMessage(this.value, "Paul"));
-        break;
+      switch (x) {
+        case 'paul':
+          toggle(this);
+          console.log(turnMessage(this.value, x.charAt(0).toUpperCase() + x.slice(1)));
+          break;
 
-      case 'rose':
-        toggle(this);
-        console.log(turnMessage(this.value, "Rose"));
-        break;
+        case 'rose':
+          toggle(this);
+          console.log(turnMessage(this.value, x.charAt(0).toUpperCase() + x.slice(1)));
+          break;
 
-      case 'thomas':
-        toggle(this);
-        console.log(turnMessage(this.value, "Thomas"));
-        break;
+        case 'thomas':
+          toggle(this);
+          console.log(turnMessage(this.value, x.charAt(0).toUpperCase() + x.slice(1)));
+          break;
 
-      case 'tablet':
-        toggle(this);
-        console.log(turnMessage(this.value, "the tablet"));
-        break;
+        case 'tablet':
+          toggle(this);
+          console.log(turnMessage(this.value, x.charAt(0).toUpperCase() + x.slice(1)));
+          break;
 
-      default:
-        return false;
+        default:
+          return false;
     }
-}
+  }
   </script>
 
 </body>
